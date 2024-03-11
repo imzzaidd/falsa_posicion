@@ -4,7 +4,17 @@ def funcion1(x):
 def funcion2(x):
     return x**2 - 4
 
-def falsa_posicion(funcion, a, b, tolerancia=1e-10, max_iter=100):
+def solicitar_intervalo():
+    a = float(input("Ingrese el valor de a: "))
+    b = float(input("Ingrese el valor de b: "))
+    return a, b
+
+def solicitar_puntos_iniciales():
+    p0 = float(input("Ingrese el valor inicial p0: "))
+    p1 = float(input("Ingrese el valor inicial p1: "))
+    return p0, p1
+
+def falsa_posicion(funcion, a, b, tolerancia=0.0, max_iter=1000):
     if funcion(a) * funcion(b) >= 0:
         print("La función no cumple con la condición de cambio de signo en el intervalo dado.")
         return None
@@ -20,7 +30,7 @@ def falsa_posicion(funcion, a, b, tolerancia=1e-10, max_iter=100):
         c = (a * funcion_b - b * funcion_a) / (funcion_b - funcion_a)
         
         error = abs(funcion(c))
-        print(f"Iteración {iteracion + 1}: raíz aproximada = {c:.15f}, error = {error:.15f}")
+        print(f"Iteración {iteracion + 1}: raíz aproximada = {c:.20f}, error = {error:.15f}")
         
         if error < tolerancia:
             print("La ejecución se detuvo debido a que el error es menor que la tolerancia especificada.")
@@ -36,7 +46,7 @@ def falsa_posicion(funcion, a, b, tolerancia=1e-10, max_iter=100):
     print("El método de la Falsa Posición no converge dentro del número máximo de iteraciones.")
     return None
 
-def interpolacion_inversa(funcion, p0, p1, tolerancia=1e-10, max_iter=100):
+def interpolacion_inversa(funcion, p0, p1, tolerancia=0.0, max_iter=1000):
     iteracion = 0
     while iteracion < max_iter:
         f_p1 = funcion(p1)
@@ -50,7 +60,7 @@ def interpolacion_inversa(funcion, p0, p1, tolerancia=1e-10, max_iter=100):
         p1 = p2 - funcion(p2) * (p2 - p1) / (funcion(p2) - funcion(p1) + 1e-9) # Interpolación inversa
         
         error = abs(funcion(p1))
-        print(f"Iteración {iteracion + 1}: raíz aproximada = {p1:.15f}, error = {error:.15f}")
+        print(f"Iteración {iteracion + 1}: raíz aproximada = {p1:.20f}, error = {error:.15f}")
         
         if error < tolerancia:
             print("La ejecución se detuvo debido a que el error es menor que la tolerancia especificada.")
@@ -74,18 +84,10 @@ else:
     print("Opción inválida.")
     exit()
 
-# Solicitar intervalo inicial [a, b] para el método de la Falsa Posición
-a = float(input("Ingrese el valor de a para el método de la Falsa Posición: "))
-b = float(input("Ingrese el valor de b para el método de la Falsa Posición: "))
-
-# Llamar al método de la Falsa Posición
+a, b = solicitar_intervalo()
 print("\nUtilizando el método de la Falsa Posición:")
-raiz_falsa_posicion = falsa_posicion(funcion, a, b,tolerancia=1e-10,max_iter=10000)
+raiz_falsa_posicion = falsa_posicion(funcion, a, b, tolerancia=0.0, max_iter=1000)
 
-# Solicitar puntos iniciales p0, p1 para el método de Interpolación Inversa
-p0 = float(input("Ingrese el valor inicial p0 para el método de Interpolación Inversa: "))
-p1 = float(input("Ingrese el valor inicial p1 para el método de Interpolación Inversa: "))
-
-# Llamar al método de Interpolación Inversa
+p0, p1 = solicitar_puntos_iniciales()
 print("\nUtilizando el método de Interpolación Inversa:")
-raiz_interpolacion_inversa = interpolacion_inversa(funcion, p0, p1, tolerancia=1e-10,max_iter=10000)
+raiz_interpolacion_inversa = interpolacion_inversa(funcion, p0, p1, tolerancia=0.0, max_iter=1000)
