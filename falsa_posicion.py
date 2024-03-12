@@ -1,3 +1,5 @@
+import math
+import pytest
 #---------------------------------------------------------------------------------------------#    
                                 # -- -INSTITUTO POLITÉCNICO NACIONAL ---
     # -- UNIDAD PROFESIONAL INTERDISCIPLINARIA DE INGENIERÍA Y CIENCIAS SOCIALES Y ADMINISTRATIVAS  --
@@ -11,7 +13,7 @@
 #POLINOMIO DE TERCER GRADO
 
 def funcion1(x):
-    return x**3 - 6*x**2 + 11*x - 6
+    return x**2 - 4*x+4-math.log(x)
 
 #POLINIMIO DE SEGUNDO GRADO -> (FUNCIÓN CUADRATICA)
 def funcion2(x):
@@ -94,7 +96,7 @@ print("1. f(x) = x^3 - 6*x^2 + 11*x - 6")
 print("2. f(x) = x^2 - 4")
 opcion = int(input("Ingrese el número de la función: "))
 
-#LÓGICA DE OPCIONES
+#LÓGICA DE OPCIONE
 if opcion == 1:
     funcion = funcion1
 elif opcion == 2:
