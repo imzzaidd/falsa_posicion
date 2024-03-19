@@ -55,7 +55,7 @@ def falsa_posicion(funcion, a, b, tolerancia=0.0, max_iter=1000):
         print(f"Iteración {iteracion + 1}: Raíz aproximada = {c:.20f}, Error = {error:.15f}")
         
         if error < tolerancia:
-            print("La ejecución se detuvo ya que el error es menor que la tolerancia asignada.")
+            print("La ejecución se detuvo ya que el error es menor que la tolerancia.")
             return c
         
         if funcion(c) * funcion(a) < 0:
@@ -65,7 +65,7 @@ def falsa_posicion(funcion, a, b, tolerancia=0.0, max_iter=1000):
             
         iteracion += 1
     
-    print("El método de la Falsa Posición no converge dentro del número máximo de iteraciones.")
+    print("El método Falsa Posición no converge dentro del número máximo de iteraciones.")
     return None
 
 #OUTPUT
@@ -77,8 +77,8 @@ while True:
         a, b = solicitar_intervalo()
         break
     except ValueError:
-        print("Por favor, ingrese valores numéricos válidos.")
+        print("Por favor, ingrese números válidos.")
 
-print("\nUtilizando el método de la Falsa Posición:")
+print("\nUtilizando Falsa Posición:")
 raiz_falsa_posicion = falsa_posicion(funcion1, a, b, tolerancia=0.0, max_iter=1000)
 
