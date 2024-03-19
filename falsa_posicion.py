@@ -16,7 +16,7 @@ import math
 #FUNCIÓN
 def funcion1(x):
     if x <= 0:
-        return float('inf')  # Si x es menor o igual a cero, retornar infinito positivo
+        return float('inf') 
     return x**2 - 4*x + 4 - math.log(x)
 
 #INTERVALO OUTPUT
